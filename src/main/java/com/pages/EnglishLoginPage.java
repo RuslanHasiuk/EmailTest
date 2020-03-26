@@ -12,8 +12,6 @@ public class EnglishLoginPage extends BasePage {
     @FindBy(xpath = "//button/span[contains(text(),\"English\")]")
     WebElement englishButton;
 
-  //  private By englishButton = By.xpath("//button/span[contains(text(),\"English\")]");
-
     public void waitUntilTitleIsPresent(String title) {
         waiter.until(ExpectedConditions.titleIs(title));
         Log.info("Title of EnglishLoginPage is present");

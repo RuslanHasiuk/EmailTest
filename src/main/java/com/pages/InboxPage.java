@@ -11,8 +11,6 @@ public class InboxPage extends BasePage {
     @FindBy(xpath = "//button[@class=\"default compose\"]")
     WebElement composeButton;
 
-  //  private By composeButton = By.xpath("//button[@class=\"default compose\"]");
-
     public InboxPage openInboxPage(){
         driver.get(INBOX_PAGE_URL);
         Log.info("InboxPage is opened");

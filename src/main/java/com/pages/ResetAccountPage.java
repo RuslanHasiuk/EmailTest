@@ -20,11 +20,6 @@ public class ResetAccountPage extends BasePage {
     @FindBy(xpath = "//label[contains(@class,\"input-label\")]")
     WebElement inputLabel;
 
- //   private By inputField = By.id("id-login");
- //   private By checkBox = By.xpath("//label[contains(@class,\"checkbox\")][1]");
- //   private By submitButton = By.xpath("//button[@type=\"submit\"]");
-  //  private By inputLabel = By.xpath("//label[contains(@class,\"input-label\")]");
-
     public void waitUntilInputFieldIsVisible(){
         waiter.until(ExpectedConditions.visibilityOf(inputField));
         Log.info("Wait for presenting Input field");

@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 
 public class LoginPage extends BasePage {
 
@@ -31,14 +30,6 @@ public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//button/span[contains(text(),\"English\")]")
     WebElement englishButton;
-
-  //  private By emailField = By.id("id-l");
-  //  private By passField = By.id("id-p");
-   // private By submitButton = By.xpath("//button[@type=\"submit\"]");
-  //  private By errorMessage = By.xpath("//p[@class=\"form__error form__error_fail\"]");
-   // private By headerLogo = By.xpath("//div[@class=\"header__logo header__logo_lang-uk\"]");
-  //  private By resetAccountButton = By.xpath("//a[@class=\"link link_style-main\"][contains(text(),\"Не вдається увійти?\")]");
-  //  private By englishButton = By.xpath("//button/span[contains(text(),\"English\")]");
 
     public void waitUntilLoginPageLogoIsLoaded(){
         waiter.until(ExpectedConditions.visibilityOf(headerLogo));
@@ -105,10 +96,4 @@ public class LoginPage extends BasePage {
         Log.info("Go to EnglishPage for login");
         return new EnglishLoginPage();
     }
-
-//   public EnglishHomePage switchtoEnglishLanguage(){
-//        driver.findElement(englishLanguageRaddioButton).click();
-//        driver.findElement(saveButton).click();
-//        return  new EnglishHomePage();
-//    }
 }
