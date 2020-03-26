@@ -1,4 +1,4 @@
-package com.Tests;
+package com.tests;
 
 import com.Utils.DriverManager;
 import org.testng.annotations.AfterMethod;
@@ -9,8 +9,6 @@ public class BaseTest {
     protected String englishLoginPageTitle = "Mail @ ukr.net - ukrainian electronic mail • Create email";
     protected String inboxPageTitle = "Вхідні • gotestemail@ukr.net";
     protected String resetAccountPageTitle = "Відновлення доступу до поштової скриньки";
-
-
 
     @BeforeMethod
     public void setUp (){

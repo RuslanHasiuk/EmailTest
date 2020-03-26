@@ -1,8 +1,9 @@
-package com.Tests;
+package com.tests;
 
-import Pages.InboxPage;
-import com.Pages.EnglishLoginPage;
-import com.Pages.ResetAccountPage;
+import com.pages.EnglishLoginPage;
+import com.pages.InboxPage;
+import com.pages.LoginPage;
+import com.pages.ResetAccountPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,7 +11,7 @@ public class LoginPageTests extends BaseTest {
 
     @Test
     public void VerifyLogInToInboxPageWithValidCredentionals(){
-        Pages.LoginPage loginPage = new Pages.LoginPage();
+        LoginPage loginPage = new LoginPage();
         InboxPage inboxPage = new InboxPage();
         loginPage.openLoginPage();
         Assert.assertTrue(loginPage.atPage(loginPageTitle));
@@ -20,7 +21,7 @@ public class LoginPageTests extends BaseTest {
     }
     @Test
     public void VerifyLogInToInboxPageWithInvalidPassword(){
-        Pages.LoginPage loginPage = new Pages.LoginPage();
+        LoginPage loginPage = new LoginPage();
         loginPage.openLoginPage();
         Assert.assertTrue(loginPage.atPage(loginPageTitle));
         loginPage.enterEmail("GoTestEmail").enterPassword("123test").submitLoginForm();
@@ -30,7 +31,7 @@ public class LoginPageTests extends BaseTest {
 
     @Test
     public void VerifyLogInToInboxPageWithInvalidEmail(){
-        Pages.LoginPage loginPage = new Pages.LoginPage();
+        LoginPage loginPage = new LoginPage();
         loginPage.openLoginPage();
         Assert.assertTrue(loginPage.atPage(loginPageTitle));
         loginPage.enterEmail("GoTestEmaill").enterPassword("1234test").submitLoginForm();
@@ -39,18 +40,18 @@ public class LoginPageTests extends BaseTest {
     }
     @Test
     public void VerifyRedirectToResetAccountPage(){
-        Pages.LoginPage loginPage = new Pages.LoginPage();
-        ResetAccountPage resetPage = new ResetAccountPage();
+      LoginPage loginPage = new LoginPage();
+      ResetAccountPage resetPage = new ResetAccountPage();
       loginPage.openLoginPage();
-        Assert.assertTrue(loginPage.atPage(loginPageTitle));
-        loginPage.goToResetPage();
-        resetPage.waitUntilInputFieldIsPresent();
+      Assert.assertTrue(loginPage.atPage(loginPageTitle));
+      loginPage.goToResetPage();
+      resetPage.waitUntilInputFieldIsVisible();
       Assert.assertTrue(resetPage.inputFieldLabelIsDisplayed());
     }
 
     @Test
     public void VerifySwitchLoginPageToEnglishLanguage(){
-        Pages.LoginPage loginPage = new Pages.LoginPage();
+        LoginPage loginPage = new LoginPage();
         EnglishLoginPage englishPage = new EnglishLoginPage();
         loginPage.openLoginPage();
         Assert.assertTrue(loginPage.atPage(loginPageTitle));

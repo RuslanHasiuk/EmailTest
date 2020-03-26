@@ -1,4 +1,4 @@
-package Pages;
+package com.pages;
 
 import com.Utils.DriverManager;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +14,6 @@ public class BasePage {
         waiter = new WebDriverWait(driver, 20);
         PageFactory.initElements(driver, this);
     }
-
 
    public static final String LOGIN_PAGE_URL = "https://accounts.ukr.net/login";
    public static final String ENGLISH_LOGIN_PAGE_URL = "https://accounts.ukr.net/login";
