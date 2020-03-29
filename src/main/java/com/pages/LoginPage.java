@@ -1,12 +1,14 @@
 package com.pages;
 
-import com.pages.EnglishLoginPage;
-import com.pages.ResetAccountPage;
+import com.google.gson.Gson;
+import com.model.UserCreds;
 import com.utils.Log;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.io.*;
 
 public class LoginPage extends BasePage {
 
@@ -20,7 +22,7 @@ public class LoginPage extends BasePage {
     WebElement submitButton;
 
     @FindBy(xpath = "//p[@class=\"form__error form__error_fail\"]")
-    WebElement errorMessage;
+    WebElement errorCredsMessage;
 
     @FindBy(xpath = "//div[@class=\"header__logo header__logo_lang-uk\"]")
     WebElement headerLogo;
@@ -30,6 +32,12 @@ public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//button/span[contains(text(),\"English\")]")
     WebElement englishButton;
+
+    @FindBy(xpath = "//p[@class=\"form__error form__error_fail\"]")
+    WebElement errorEmptyEmailMessage;
+
+    @FindBy(xpath = "//p[@class=\"form__error form__error_fail\"]")
+    WebElement errorEmptyPassMessage;
 
     public void waitUntilLoginPageLogoIsLoaded(){
         waiter.until(ExpectedConditions.visibilityOf(headerLogo));
@@ -49,10 +57,19 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public LoginPage enterPassword (String pass){
-        passField.sendKeys(pass);
+    public LoginPage enterPassword (String password){
+              passField.sendKeys(password);
         Log.info("Password has been entered");
         return this;
+    }
+
+        public UserCreds parseUserCreds() throws FileNotFoundException {
+        String path = "C:\\Users\\travel\\IdeaProjects\\EmailTest\\src\\main\\resources\\creds.json";
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+
+        Gson gson = new Gson();
+        UserCreds json = gson.fromJson(bufferedReader, UserCreds.class);
+        return json;
     }
 
     public InboxPage submitLoginForm (){
@@ -69,14 +86,32 @@ public class LoginPage extends BasePage {
        return new InboxPage();
     }
 
-    public boolean isErrorDisplayed(){
-       String text =  errorMessage.getText();
+    public boolean isErrorAboutInvaliCredsDisplayed(){
+       String text =  errorCredsMessage.getText();
        Log.info("Message about wrong creds is displayed");
        return text.contains("Неправильні дані");
     }
 
+    public boolean isErrorAboutEmptyEmailFieldDisplayed(){
+        waitUntilEmptyEmailErrorIsLoaded();
+        String text =  errorEmptyEmailMessage.getText();
+        Log.info("Message about empty Email field is displayed");
+        return text.contains("Поле має бути заповнене");
+    }
+
+    public boolean isErrorAboutEmptyPasswordFieldDisplayed(){
+        waitUntilEmptyEmailErrorIsLoaded();
+        String text =  errorEmptyPassMessage.getText();
+        Log.info("Message about empty Password field is displayed");
+        return text.contains("Поле має бути заповнене");
+    }
+
     public void waitUntilErrorMessageElementIsLoaded(){
-        waiter.until(ExpectedConditions.visibilityOf(errorMessage));
+        waiter.until(ExpectedConditions.visibilityOf(errorCredsMessage));
+        Log.info("Wait for presenting Error Message");
+    }
+    public void waitUntilEmptyEmailErrorIsLoaded(){
+        waiter.until(ExpectedConditions.visibilityOf(errorEmptyEmailMessage));
         Log.info("Wait for presenting Error Message");
     }
 

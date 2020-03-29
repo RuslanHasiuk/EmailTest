@@ -30,4 +30,5 @@ public class ResetAccountPage extends BasePage {
         Log.info("Check if Label of input field is displayed on ResetPage");
         return text.contains("Введіть ім'я вашої поштової скриньки:");
     }
+
 }

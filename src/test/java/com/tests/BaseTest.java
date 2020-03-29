@@ -1,8 +1,10 @@
 package com.tests;
 
 import com.Utils.DriverManager;
+import com.model.Credentials;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
     protected String loginPageTitle = "Пошта @ ukr.net - українська електронна пошта • Створи емейл";
@@ -19,5 +21,4 @@ public class BaseTest {
     public void tearDown() {
         DriverManager.close();
     }
-
 }
