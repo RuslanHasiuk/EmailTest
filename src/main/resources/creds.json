@@ -1,0 +1,24 @@
+{
+   "user_credentials": [
+        {
+        "email": "GoTestEmail",
+        "password": "1234test"
+        },
+        {
+        "email": "GoTestEmail",
+        "password": "1234testt"
+        },
+        {
+        "email": "GoTestEmeil",
+        "password": "1234test"
+        },
+        {
+        "email": "",
+        "password": "1234test"
+        },
+        {
+        "email": "GoTestEmail",
+        "password": ""
+        }
+      ]
+}
