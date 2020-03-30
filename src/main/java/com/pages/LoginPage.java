@@ -63,6 +63,7 @@ public class LoginPage extends BasePage {
         return this;
     }
 
+        // TODO remove hard coded value
         public UserCreds parseUserCreds() throws FileNotFoundException {
         String path = "C:\\Users\\travel\\IdeaProjects\\EmailTest\\src\\main\\resources\\creds.json";
         BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
