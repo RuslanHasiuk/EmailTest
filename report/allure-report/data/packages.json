@@ -1,0 +1,22 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "com.tests.LoginPageTests",
+    "children" : [ {
+      "name" : "VerifyLogInToInboxPageWithValidCredentials",
+      "uid" : "b9fc9a4be49352a1",
+      "parentUid" : "8fd0f0a8968aa68ac341c09aa47bb688",
+      "status" : "passed",
+      "time" : {
+        "start" : 1585567598601,
+        "stop" : 1585567617842,
+        "duration" : 19241
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "com.tests.LoginPageTests"
+  } ]
+}

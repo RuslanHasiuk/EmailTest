@@ -1,0 +1,39 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "SK-LV9",
+    "children" : [ {
+      "name" : "13504@SK-LV9.main(1)",
+      "children" : [ {
+        "name" : "VerifyLogInToInboxPageWithValidCredentials",
+        "uid" : "e2b519ada22dbb60",
+        "parentUid" : "cb7cefc3a243bf1ca33e5a0f1d44617e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1585567598593,
+          "stop" : 1585567617581,
+          "duration" : 18988
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "VerifyLogInToInboxPageWithValidCredentials",
+        "uid" : "b9fc9a4be49352a1",
+        "parentUid" : "cb7cefc3a243bf1ca33e5a0f1d44617e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1585567598601,
+          "stop" : 1585567617842,
+          "duration" : 19241
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "cb7cefc3a243bf1ca33e5a0f1d44617e"
+    } ],
+    "uid" : "a5c5481a55dee9306f803ab96ef5d25f"
+  } ]
+}

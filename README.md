@@ -4,6 +4,8 @@
 ##### ```cd PROJECT_FOLDER```
 ##### ```allure generate```
 ##### ```allure serve```
+[Report](report/allure-report/index.html?raw=true)
+
 
 
 

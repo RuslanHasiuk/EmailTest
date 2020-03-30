@@ -3,6 +3,7 @@ package com.pages;
 import com.google.gson.Gson;
 import com.model.UserCreds;
 import com.utils.Log;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
@@ -52,30 +53,27 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage enterEmail (String email){
+        emailField.clear();
         emailField.sendKeys(email);
         Log.info("Email has been entered");
         return this;
     }
 
     public LoginPage enterPassword (String password){
-              passField.sendKeys(password);
+        passField.clear();
+        passField.sendKeys(password);
         Log.info("Password has been entered");
         return this;
-    }
-
-        // TODO remove hard coded value
-        public UserCreds parseUserCreds() throws FileNotFoundException {
-        String path = "C:\\Users\\travel\\IdeaProjects\\EmailTest\\src\\main\\resources\\creds.json";
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-
-        Gson gson = new Gson();
-        UserCreds json = gson.fromJson(bufferedReader, UserCreds.class);
-        return json;
     }
 
     public InboxPage submitLoginForm (){
         submitButton.click();
         Log.info("Login Form has been submitted");
+        return new InboxPage();
+    }
+    public InboxPage submitWithEnterKey (){
+        submitButton.sendKeys(Keys.RETURN);
+        Log.info("Login Form has been submitted by pressing Enter Key");
         return new InboxPage();
     }
 

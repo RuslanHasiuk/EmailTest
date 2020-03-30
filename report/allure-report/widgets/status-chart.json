@@ -1,0 +1,11 @@
+[ {
+  "uid" : "b9fc9a4be49352a1",
+  "name" : "VerifyLogInToInboxPageWithValidCredentials",
+  "time" : {
+    "start" : 1585567598601,
+    "stop" : 1585567617842,
+    "duration" : 19241
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]
