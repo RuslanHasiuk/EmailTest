@@ -4,7 +4,7 @@
 ##### ```cd PROJECT_FOLDER```
 ##### ```allure generate```
 ##### ```allure serve```
-![Screenshot](report/report.png)
+![Screenshot](report/loginPageReport.png)
 
 
 
