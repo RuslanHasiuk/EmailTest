@@ -25,7 +25,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//p[@class=\"form__error form__error_fail\"]")
     WebElement errorCredsMessage;
 
-    @FindBy(xpath = "//div[@class=\"header__logo header__logo_lang-uk\"]")
+    @FindBy(xpath = "//div[@class=\"header__wrapper\"]")
     WebElement headerLogo;
 
     @FindBy(xpath = "//a[@class=\"link link_style-main\"][contains(text(),\"Не вдається увійти?\")]")
@@ -47,7 +47,7 @@ public class LoginPage extends BasePage {
 
     public InboxPage openLoginPage () {
         driver.get(LOGIN_PAGE_URL);
-        waitUntilLoginPageLogoIsLoaded();
+        waiter.until(ExpectedConditions.visibilityOf(headerLogo));
         Log.info("Make sure PageLogo is present on LoginPage");
         return new InboxPage();
     }
@@ -80,7 +80,7 @@ public class LoginPage extends BasePage {
     public InboxPage loginToInboxPage(String email, String pass){
        openLoginPage();
        waitUntilLoginPageLogoIsLoaded();
-       enterEmail(email).enterPassword(pass).submitLoginForm();
+       enterEmail(email).enterPassword(pass).submitWithEnterKey();
        Log.info("User is logged in successfully");
        return new InboxPage();
     }

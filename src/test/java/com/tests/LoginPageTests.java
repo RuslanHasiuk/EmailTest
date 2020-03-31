@@ -14,81 +14,58 @@ import java.io.FileNotFoundException;
 
 public class LoginPageTests extends BaseTest {
 
-    @Test(groups = {"regression"})
-    public void VerifyLogInToInboxPageWithValidCredentials()throws FileNotFoundException {
+    @Test
+    public void VerifyLogInToInboxPageWithValidCredentials() {
         LoginPage loginPage = new LoginPage();
         InboxPage inboxPage = new InboxPage();
-    //    Credentials validCreds = userCreds.getUserCredentials().get(0);
         loginPage.openLoginPage();
         Assert.assertTrue(loginPage.atPage(loginPageTitle));
-//        loginPage.enterEmail(validCreds.getEmail()).enterPassword(validCreds.getPassword()).submitLoginForm();
-        loginPage.enterEmail("gotestemail").enterPassword("1234test").submitLoginForm();
+        Credentials validCreds = userCreds.getUserCredentials().get(0);
+        loginPage.enterEmail(validCreds.getEmail()).enterPassword(validCreds.getPassword()).submitLoginForm();
         inboxPage.waitUntilInboxPageIsLoaded();
         Assert.assertTrue(inboxPage.atPage(inboxPageTitle));
     }
 
-    @Test(groups = {"regression"})
-    public void VerifyLogInToInboxPageWithInvalidPassword() throws  FileNotFoundException{
+    @Test
+    public void VerifyLogInToInboxPageWithInvalidPassword() {
         LoginPage loginPage = new LoginPage();
+        loginPage.openLoginPage();
+        Assert.assertTrue(loginPage.atPage(loginPageTitle));
         Credentials validCreds = userCreds.getUserCredentials().get(1);
-        loginPage.openLoginPage();
-        Assert.assertTrue(loginPage.atPage(loginPageTitle));
         loginPage.enterEmail(validCreds.getEmail()).enterPassword(validCreds.getPassword()).submitLoginForm();
         loginPage.waitUntilErrorMessageElementIsLoaded();
         Assert.assertTrue(loginPage.isErrorAboutInvaliCredsDisplayed());
     }
 
     @Test
-    public void VerifyLogInToInboxPageWithInvalidEmail() throws FileNotFoundException {
+    public void VerifyLogInToInboxPageWithInvalidEmail() {
         LoginPage loginPage = new LoginPage();
+        loginPage.openLoginPage();
+        Assert.assertTrue(loginPage.atPage(loginPageTitle));
         Credentials validCreds = userCreds.getUserCredentials().get(2);
-        loginPage.openLoginPage();
-        Assert.assertTrue(loginPage.atPage(loginPageTitle));
         loginPage.enterEmail(validCreds.getEmail()).enterPassword(validCreds.getPassword()).submitLoginForm();
         loginPage.waitUntilErrorMessageElementIsLoaded();
         Assert.assertTrue(loginPage.isErrorAboutInvaliCredsDisplayed());
     }
 
     @Test
-    public void VerifyLogInToInboxPageWitEmptyEmail() throws FileNotFoundException {
+    public void VerifyLogInToInboxPageWitEmptyEmail() {
         LoginPage loginPage = new LoginPage();
-        Credentials validCreds = userCreds.getUserCredentials().get(3);
         loginPage.openLoginPage();
         Assert.assertTrue(loginPage.atPage(loginPageTitle));
+        Credentials validCreds = userCreds.getUserCredentials().get(3);
         loginPage.enterEmail(validCreds.getEmail()).enterPassword(validCreds.getPassword()).submitLoginForm();
         Assert.assertTrue(loginPage.isErrorAboutEmptyEmailFieldDisplayed());
     }
 
     @Test
-    public void VerifyLogInToInboxPageWitEmptyPassword() throws FileNotFoundException {
+    public void VerifyLogInToInboxPageWitEmptyPassword() {
         LoginPage loginPage = new LoginPage();
-        Credentials validCreds = userCreds.getUserCredentials().get(4);
         loginPage.openLoginPage();
         Assert.assertTrue(loginPage.atPage(loginPageTitle));
+        Credentials validCreds = userCreds.getUserCredentials().get(4);
         loginPage.enterEmail(validCreds.getEmail()).enterPassword(validCreds.getPassword()).submitLoginForm();
         Assert.assertTrue(loginPage.isErrorAboutEmptyPasswordFieldDisplayed());
-    }
-
-    @Test
-    public void VerifyRedirectToResetAccountPage() {
-      LoginPage loginPage = new LoginPage();
-      ResetAccountPage resetPage = new ResetAccountPage();
-      loginPage.openLoginPage();
-      Assert.assertTrue(loginPage.atPage(loginPageTitle));
-      loginPage.goToResetPage();
-      resetPage.waitUntilInputFieldIsVisible();
-      Assert.assertTrue(resetPage.inputFieldLabelIsDisplayed());
-    }
-
-    @Test
-    public void VerifySwitchLoginPageToEnglishLanguage() {
-        LoginPage loginPage = new LoginPage();
-        EnglishLoginPage englishPage = new EnglishLoginPage();
-        loginPage.openLoginPage();
-        Assert.assertTrue(loginPage.atPage(loginPageTitle));
-        loginPage.goToEnglishPage();
-        englishPage.waitUntilTitleIsPresent(englishLoginPageTitle);
-        Assert.assertTrue(englishPage.isEnglishLanguageSelected());
     }
 
     @Test
@@ -102,4 +79,27 @@ public class LoginPageTests extends BaseTest {
         inboxPage.waitUntilInboxPageIsLoaded();
         Assert.assertTrue(inboxPage.atPage(inboxPageTitle));
     }
+
+    @Test
+    public void VerifyRedirectToResetAccountPage() {
+        LoginPage loginPage = new LoginPage();
+        ResetAccountPage resetPage = new ResetAccountPage();
+        loginPage.openLoginPage();
+        Assert.assertTrue(loginPage.atPage(loginPageTitle));
+        loginPage.goToResetPage();
+        resetPage.waitUntilInputFieldIsVisible();
+        Assert.assertTrue(resetPage.inputFieldLabelIsDisplayed());
+    }
+
+    @Test
+    public void VerifySwitchLoginPageToEnglishLanguage() {
+        LoginPage loginPage = new LoginPage();
+        EnglishLoginPage englishPage = new EnglishLoginPage();
+        loginPage.openLoginPage();
+        Assert.assertTrue(loginPage.atPage(loginPageTitle));
+        loginPage.goToEnglishPage();
+        englishPage.waitUntilTitleIsPresent(englishLoginPageTitle);
+        Assert.assertTrue(englishPage.isEnglishLanguageSelected());
+    }
+
 }

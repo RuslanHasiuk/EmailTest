@@ -8,9 +8,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class CustomJsonParser {
-    public static UserCreds parseUserCreds() throws FileNotFoundException {
-        String path = "C:\\Users\\travel\\IdeaProjects\\EmailTest\\src\\main\\resources\\creds.json";
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+    public static UserCreds parseUserCreds()  {
+        String path = "src/main/resources/creds.json";
+        BufferedReader bufferedReader = null;
+        try {
+            bufferedReader = new BufferedReader(new FileReader(path));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         Gson gson = new Gson();
         UserCreds json = gson.fromJson(bufferedReader, UserCreds.class);
         return json;

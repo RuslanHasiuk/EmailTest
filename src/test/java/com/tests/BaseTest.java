@@ -4,10 +4,7 @@ import com.utils.DriverManager;
 import com.model.Credentials;
 import com.model.UserCreds;
 import com.utils.CustomJsonParser;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 import java.io.FileNotFoundException;
 
@@ -28,8 +25,9 @@ public class BaseTest {
         DriverManager.close();
     }
 
-    @BeforeClass
+    @BeforeSuite
     public void parseUserCredentials () throws FileNotFoundException {
         userCreds=CustomJsonParser.parseUserCreds();
     }
+
 }
